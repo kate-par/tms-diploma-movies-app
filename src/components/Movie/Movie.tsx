@@ -1,43 +1,40 @@
 import React, { useState } from "react";
 import styles from "./Movie.module.css";
 import Modal from "../Modal";
+import { MovieProps } from "types/types";
 
 interface Props {
-  poster_path: string;
-  title: string;
-  release_date: string;
-  genres: Array<string>;
-  overview: string;
-  budget: number;
-  vote_average: number;
-  vote_count: number;
+  movie: MovieProps;
 }
-
-const Movie: React.FC<Props> = (props) => {
+const Movie: React.FC<Props> = ({ movie }) => {
   const [isModal, setModal] = useState(false);
   const onClose = () => setModal(false);
+
   return (
     <>
       <div className={styles.component} onClick={() => setModal(true)}>
-        <img className={styles.image} src={props.poster_path} alt=""></img>
+        <img className={styles.image} src={movie.poster_path} alt=""></img>
         <div className={styles.content}>
-          <h4 className={styles.title}>{props.title}</h4>
-          <p className={styles.text}>{props.release_date}</p>
+          <h4 className={styles.title}>{movie.title}</h4>
+          <p className={styles.text}>{movie.release_date}</p>
         </div>
-        <span className={styles.footer}>{props.genres}</span>
+        <span className={styles.footer}>{movie.genres.toString()}</span>
       </div>
       <Modal
         visible={isModal}
-        title={props.title}
+        title={movie.title}
         content={
-          <>
-            <p>{props.title}</p>
-            <p>{props.overview}</p>
+          <div>
+            <p>{movie.tagline}</p>
+            <p>{movie.genres.toString()}</p>
+            <p>{movie.overview}</p>
             <p>
-              Vote average: {props.vote_average}, vote count: {props.vote_count}
+              Vote average: {movie.vote_average}, vote count: {movie.vote_count}
             </p>
-            <p>{props.budget}</p>
-          </>
+            <p>Budget: $ {movie.budget}</p>
+            <p>Revenue: $ {movie.revenue}</p>
+            <p>Runtime: {movie.runtime} minutes</p>
+          </div>
         }
         onClose={onClose}
       />

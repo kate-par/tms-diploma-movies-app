@@ -1,24 +1,40 @@
 .component {
-  margin: 25px;
+  margin: 20px;
   padding: 5px;
-  max-width: 345px;
-  max-height: 630px;
+  width: 500px;
+  /* height: 800px; */
   border: 1px solid transparent;
 }
 
 .image {
-  margin: 15px;
+  width: 470px;
+}
+
+.content {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.image {
+  margin: 0px;
+  width: 470px;
 }
 
 .title {
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .text {
-  font-size: 24px;
+  padding: 5px;
+  font-size: 18px;
   border: 1px solid grey;
 }
 
 .footer {
-  font-size: 24px;
+  font-size: 20px;
+  text-align: left;
 }

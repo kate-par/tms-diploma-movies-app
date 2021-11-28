@@ -1,8 +1,13 @@
 import React from "react";
-import "./App.css";
+import styles from "./App.module.css";
+import MoviesContainer from "./components/MoviesContainer";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className={styles.app}>
+      <MoviesContainer />
+    </div>
+  );
 }
 
 export default App;
