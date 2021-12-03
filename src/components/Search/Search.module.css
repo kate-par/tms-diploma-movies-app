@@ -1,6 +1,7 @@
 .firstscreen {
   margin-top: -60px;
-  padding-top: 10.9375rem;
+  padding-top: 120px;
+  padding-bottom: 60px;
   background: url(/src/images/1_5lyavS59mazOFnb55Z6znQ.png) no-repeat;
   background-position: center;
   background-size: cover;
@@ -17,7 +18,33 @@
   top: 0;
   left: 0;
 }
-.container {
+.component {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
   position: relative;
   z-index: 1;
+}
+
+.title {
+  margin-bottom: 30px;
+  text-align: left;
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.text {
+  text-align: left;
+  margin-right: 15px;
+  color: var(--color-accent);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
 }
