@@ -1,3 +1,12 @@
+.loader {
+  text-align: center;
+}
+
+.component {
+  margin: 0 auto;
+  text-align: center;
+}
+
 .row {
   max-width: 1170px;
   margin: 40px auto;

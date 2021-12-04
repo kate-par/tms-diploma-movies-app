@@ -9,4 +9,9 @@
   max-width: 1170px;
   margin: 0 auto;
   padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }

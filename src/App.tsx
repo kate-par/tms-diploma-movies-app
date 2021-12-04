@@ -9,11 +9,13 @@ import Footer from "components/Footer";
 function App() {
   return (
     <div className={styles.app}>
-      <Header />
-      <Search />
-      {/* <TopBar />
-      <MoviesContainer /> */}
-      <Footer />
+      <div className={styles.wrap}>
+        <Header />
+        <Search />
+      </div>
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </div>
   );
 }
