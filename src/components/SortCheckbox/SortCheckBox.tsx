@@ -1,12 +1,12 @@
 import React from "react";
-import styles from "./SearchCheckbox.module.css";
+import styles from "./SortCheckbox.module.css";
 
 interface Props {
   name: string;
   isChecked: boolean;
   handleChangeCheckbox: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const SearchCheckbox: React.FC<Props> = (props) => {
+const SortCheckbox: React.FC<Props> = (props) => {
   return (
     <label className={styles.checkbox__item}>
       <input
@@ -19,4 +19,4 @@ const SearchCheckbox: React.FC<Props> = (props) => {
   );
 };
 
-export default SearchCheckbox;
+export default SortCheckbox;
