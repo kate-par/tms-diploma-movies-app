@@ -1,10 +1,12 @@
 import React, { ReactElement, useEffect } from "react";
 import styles from "./Modal.module.css";
+import { MovieProps } from "types/types";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
 interface ModalProps {
+  movie: MovieProps;
   visible: boolean;
   title: string;
   content: ReactElement | string;
@@ -12,6 +14,7 @@ interface ModalProps {
 }
 
 const Modal = ({
+  movie,
   visible = false,
   title = "",
   content = "",
@@ -47,25 +50,19 @@ const Modal = ({
         })}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className={styles.header}>
-          <h3 className={styles.title}>{title}</h3>
-          <span className={styles.close} onClick={onClose}>
-            &times;
-          </span>
-        </div>
-        <div className={styles.body}>
-          <div className={styles.content}>{content}</div>
-        </div>
-        <div className={styles.footer}>
-          <button
-            className={cx({
-              button: true,
-              visible: visible,
-            })}
-            onClick={onClose}
-          >
-            Close
-          </button>
+        <div
+          className={styles.description}
+          style={{ backgroundImage: `url("${movie.poster_path}")` }}
+        >
+          <div className={styles.header}>
+            <h3 className={styles.title}>{title}</h3>
+            <span className={styles.close} onClick={onClose}>
+              &times;
+            </span>
+          </div>
+          <div className={styles.body}>
+            <div className={styles.content}>{content}</div>
+          </div>
         </div>
       </div>
     </div>

@@ -12,3 +12,13 @@ export type MovieProps = {
   genres: Array<string>;
   runtime: number;
 };
+
+export enum SearchBy {
+  TITLE = "TITLE",
+  GENRE = "GENRE",
+}
+
+export enum SortBy {
+  RELEASE_DATE = "release date",
+  RATING = "rating",
+}

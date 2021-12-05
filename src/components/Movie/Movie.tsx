@@ -17,23 +17,24 @@ const Movie: React.FC<Props> = ({ movie }) => {
         <div className={styles.content}>
           <h4 className={styles.title}>{movie.title}</h4>
           <p className={styles.text}>{movie.release_date}</p>
+          <p className={styles.footer}>{movie.genres.toString()}</p>
         </div>
-        <span className={styles.footer}>{movie.genres.toString()}</span>
       </div>
       <Modal
+        movie={movie}
         visible={isModal}
         title={movie.title}
         content={
           <div>
-            <p>{movie.tagline}</p>
-            <p>{movie.genres.toString()}</p>
-            <p>{movie.overview}</p>
-            <p>
+            {/* <p>{movie.tagline}</p> */}
+            <p className={styles.genres}>{movie.genres.toString()}</p>
+            <p className={styles.overview}>{movie.overview}</p>
+            <p className={styles.vote}>
               Vote average: {movie.vote_average}, vote count: {movie.vote_count}
             </p>
             <p>Budget: $ {movie.budget}</p>
-            <p>Revenue: $ {movie.revenue}</p>
-            <p>Runtime: {movie.runtime} minutes</p>
+            {/* <p>Revenue: $ {movie.revenue}</p> */}
+            {/* <p>Runtime: {movie.runtime} minutes</p> */}
           </div>
         }
         onClose={onClose}

@@ -1,7 +1,25 @@
+.loader {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.component {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text {
+  margin-top: 15px;
+  font-size: 1.5rem;
+}
+
 .row {
+  max-width: 1170px;
+  margin: 40px auto;
+  padding: 0 15px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
 }

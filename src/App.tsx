@@ -1,11 +1,19 @@
 import React from "react";
 import styles from "./App.module.css";
-import MoviesContainer from "./components/MoviesContainer";
+import Header from "./components/Header";
+import Search from "./components/Search";
+import Footer from "components/Footer";
 
 function App() {
   return (
     <div className={styles.app}>
-      <MoviesContainer />
+      <div className={styles.wrap}>
+        <Header />
+        <Search />
+      </div>
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </div>
   );
 }
