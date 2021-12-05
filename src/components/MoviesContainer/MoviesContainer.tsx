@@ -40,13 +40,7 @@ const MoviesContainer = () => {
   });
 
   if (sortBy === "release date") {
-    filteredMovies.sort((a, b) =>
-      a.release_date
-        .split("-")
-        .reverse()
-        .join()
-        .localeCompare(b.release_date.split("-").reverse().join())
-    );
+    filteredMovies.sort((a, b) => (a.release_date > b.release_date ? 1 : -1));
   }
 
   if (sortBy === "rating") {

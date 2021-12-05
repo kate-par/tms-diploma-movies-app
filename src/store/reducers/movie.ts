@@ -64,7 +64,7 @@ const initialState: MoviesState = {
   movies: [],
   searchBy: SearchBy.TITLE,
   searchValue: "",
-  sortBy: SortBy.RATING,
+  sortBy: SortBy.RELEASE_DATE,
 };
 
 export type movieReducerAction =
