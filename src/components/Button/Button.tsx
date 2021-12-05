@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Button.module.css";
 
 interface Props {
-  handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleClick: () => void;
 }
 const Button: React.FC<Props> = (props) => {
   return (

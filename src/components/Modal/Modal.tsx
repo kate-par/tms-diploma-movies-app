@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect } from "react";
 import styles from "./Modal.module.css";
-import { MovieProps } from "types/types";
+import { MovieProps } from "store/types";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);

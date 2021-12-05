@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Movie.module.css";
 import Modal from "../Modal";
-import { MovieProps } from "types/types";
+import { MovieProps } from "store/types";
 
 interface Props {
   movie: MovieProps;

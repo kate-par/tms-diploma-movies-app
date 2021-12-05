@@ -3,47 +3,43 @@ import styles from "./MoviesContainer.module.css";
 import Movie from "../Movie";
 import TopBar from "components/TopBar";
 import BeatLoader from "react-spinners/BeatLoader";
-import { MovieProps, SortBy } from "types/types";
-
-interface Props {
-  searchInputValue: string;
-}
+import { MovieProps } from "store/types";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "store/reducers/movie";
+import { RootState } from "store/store";
 
 interface Movies {
   data: MovieProps[];
 }
 
-const MoviesContainer: React.FC<Props> = (props) => {
-  const [moviesData, setMoviesData] = useState<MovieProps[]>([]);
+const MoviesContainer = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [sortValue, setSortValue] = useState<SortBy>(SortBy.RELEASE_DATE);
+  const { movies, searchBy, searchValue, sortBy } = useSelector(
+    (state: RootState) => state.movies
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("https://reactjs-cdp.herokuapp.com/movies?limit=50")
+    fetch("https://reactjs-cdp.herokuapp.com/movies?limit=500")
       .then((response): Promise<Movies> => response.json())
       .then((moviesData) => {
-        setMoviesData(moviesData.data);
+        dispatch(setMovies(moviesData.data));
         setIsLoaded(true);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [dispatch]);
 
-  const searchMovies = (
-    searchInputValue: string,
-    moviesData: MovieProps[]
-  ): MovieProps[] => {
-    return moviesData.filter(
-      (movie) =>
-        movie.title.toLowerCase().includes(searchInputValue.toLowerCase()) ||
-        movie.genres.some((genre) =>
-          genre.toLowerCase().includes(searchInputValue.toLowerCase())
-        )
-    );
-  };
+  const filteredMovies = movies.filter((movie) => {
+    if (searchBy === "TITLE") {
+      return movie.title.toLowerCase().includes(searchValue.toLowerCase());
+    } else {
+      return movie.genres.some((genre) =>
+        genre.toLowerCase().includes(searchValue.toLowerCase())
+      );
+    }
+  });
 
-  const filteredMovies = searchMovies(props.searchInputValue, moviesData);
-
-  if (sortValue === "release date") {
+  if (sortBy === "release date") {
     filteredMovies.sort((a, b) =>
       a.release_date
         .split("-")
@@ -53,9 +49,7 @@ const MoviesContainer: React.FC<Props> = (props) => {
     );
   }
 
-  console.log(filteredMovies, sortValue);
-
-  if (sortValue === "rating") {
+  if (sortBy === "rating") {
     filteredMovies.sort((a, b) => b.vote_average - a.vote_average);
   }
 
@@ -69,13 +63,11 @@ const MoviesContainer: React.FC<Props> = (props) => {
 
   return (
     <div className={styles.component}>
-      {props.searchInputValue === "" && (
-        <h2 className={styles.text}>Find your movie!</h2>
-      )}
+      {searchValue === "" && <h2 className={styles.text}>Find your movie!</h2>}
       {filteredMovies.length === 0 && (
         <h2 className={styles.text}>No movies found!</h2>
       )}
-      {props.searchInputValue !== "" && filteredMovies.length !== 0 && (
+      {searchValue !== "" && filteredMovies.length !== 0 && (
         <>
           <TopBar moviesFound={filteredMovies.length} />
           <div className={styles.row}>
