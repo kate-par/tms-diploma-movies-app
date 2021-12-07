@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Movie.module.css";
 import Modal from "../Modal";
 import { MovieProps } from "store/types";
+import fallback from "images/no_image.jpg";
 
 interface Props {
   movie: MovieProps;
@@ -9,11 +10,24 @@ interface Props {
 const Movie: React.FC<Props> = ({ movie }) => {
   const [isModal, setModal] = useState(false);
   const onClose = () => setModal(false);
+  const [error, setError] = useState<boolean>(false);
+
+  const addDefaultSrc = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    setError(true);
+    event.currentTarget.src = fallback;
+  };
 
   return (
     <>
       <div className={styles.component} onClick={() => setModal(true)}>
-        <img className={styles.image} src={movie.poster_path} alt=""></img>
+        <img
+          className={styles.image}
+          src={movie.poster_path}
+          alt=""
+          onError={addDefaultSrc}
+        ></img>
         <div className={styles.content}>
           <h4 className={styles.title}>{movie.title}</h4>
           <p className={styles.text}>{movie.release_date}</p>
