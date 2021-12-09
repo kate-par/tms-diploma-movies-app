@@ -51,3 +51,15 @@
 .genres {
   font-size: 1rem;
 }
+
+@media (max-width: 935px) {
+  .component {
+    width: 45%;
+  }
+}
+
+@media (max-width: 635px) {
+  .component {
+    width: 95%;
+  }
+}

@@ -8,3 +8,9 @@
   line-height: 60px;
   cursor: pointer;
 }
+
+@media (max-width: 465px) {
+  .button {
+    width: 45%;
+  }
+}

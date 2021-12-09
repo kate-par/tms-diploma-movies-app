@@ -31,3 +31,11 @@
 .checkbox__item input[type="checkbox"]:checked + span {
   background-color: var(--color-primary);
 }
+
+@media (max-width: 390px) {
+  .checkbox__item span {
+    width: 100%;
+    line-height: 30px;
+    font-size: 1rem;
+  }
+}

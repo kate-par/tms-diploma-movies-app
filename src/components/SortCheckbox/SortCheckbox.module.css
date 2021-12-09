@@ -27,3 +27,9 @@
 .checkbox__item input:checked + span {
   color: var(--color-primary);
 }
+
+@media (max-width: 390px) {
+  .checkbox__item span {
+    font-size: 1.1rem;
+  }
+}
