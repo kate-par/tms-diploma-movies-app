@@ -1,0 +1,108 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  animation-name: appear;
+  animation-duration: 300ms;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 550px;
+  position: relative;
+  margin: 0 20px;
+  max-height: calc(100vh - 40px);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slide-in;
+  animation-duration: 0.5s;
+}
+
+.description {
+  border: 15px solid var(--color-accent);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.description::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header {
+  padding: 1rem;
+  padding-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1000;
+}
+
+.close {
+  cursor: pointer;
+  padding: 1rem;
+  margin: -1rem -1rem -1rem auto;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  position: relative;
+  z-index: 1000;
+}
+
+.body {
+  overflow: auto;
+  position: relative;
+  z-index: 1000;
+}
+
+.content {
+  padding: 1rem;
+  margin-bottom: 50px;
+  font-size: 1.4rem;
+  color: var(--color-accent);
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateY(-150px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
